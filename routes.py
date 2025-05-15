@@ -1,7 +1,10 @@
-from flask import Blueprint
 from controller.login_controller import LoginController
+from flask import Blueprint
 
-login_routes = Blueprint('login_routes', __name__)
+login_blueprint = Blueprint('login', __name__)
 
 login_controller = LoginController()
-login_routes.route('/login', methods=['POST'])(login_controller.login)
+
+@login_blueprint.route("/login", methods=["POST"])
+def login():
+    return login_controller.login()
