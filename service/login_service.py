@@ -1,3 +1,14 @@
 class LoginService:
-    def validate_credentials(self, username, password):
-        return username == "admin" and password == "1234"
+    def validate_credentials(self, username, password, rol=None):
+        try:
+            with open('usuarios.txt', 'r') as file:
+                for line in file:
+                    parts = line.strip().split(',')
+                    if len(parts) == 3:
+                        user, passw, stored_rol = parts
+                        if user == username and passw == password:
+                            if rol is None or rol == stored_rol:
+                                return True
+            return False
+        except FileNotFoundError:
+            return False
