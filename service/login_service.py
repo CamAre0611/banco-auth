@@ -1,7 +1,7 @@
 class LoginService:
     def validate_credentials(self, username, password, rol):
         try:
-            with open("usuarios.txt", "r") as file:
+            with open("database/usuarios.txt", "r") as file:
                 for line in file:
                     parts = line.strip().split(",")
                     if len(parts) >= 3:
