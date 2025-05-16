@@ -6,6 +6,7 @@ class LoginService:
                     parts = line.strip().split(",")
                     if len(parts) >= 2:
                         user, pwd = parts[0], parts[1]
+                        print(f"Comparando: input({username},{password}) vs archivo({user},{pwd})")
                         if user == username and pwd == password:
                             return True
             return False
